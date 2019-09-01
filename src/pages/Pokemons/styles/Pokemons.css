@@ -7,3 +7,39 @@
 .pokemons .pokemon {
 	margin: 15px;
 }
+.pokemons-next {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	max-width: 300px;
+	min-height: 120px;
+	margin: 15px;
+
+	background-color: var(--blue);
+	border: 1px solid var(--blue);
+	box-shadow:
+		0 3px 2px 0 rgba(0,0,0,0.03),
+		0 0 0 1px var(--blue);
+	border-radius: 4px;
+
+	color: #fff;
+
+	cursor: pointer;
+	transition: all 450ms var(--easing);
+}
+.pokemons-next:hover {
+	transform: translateY(5px);
+}
+.pokemons-next .icon,
+.pokemons-next svg {
+	display: block;
+	stroke-width: 1;
+}
+.pokemons-next span {
+	margin-top: 15px;
+	font-weight: 800;
+}

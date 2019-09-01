@@ -7,6 +7,11 @@
 	background-color: var(--headerColor);
 	transition: all 450ms var(--easing);
 }
+@media screen and (max-width: 520px) {
+	.header {
+		padding: 15px 10px;
+	}
+}
 .logo {
 	display: flex;
 	align-items: center;
@@ -30,10 +35,51 @@
 	color: #fff;
 }
 .nav a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-decoration: none;
 	color: inherit;
-	padding: 0 20px;
+	padding: 5px 8px;
+	margin: -5px 12px;
+	border-radius: 4px;
 }
 .nav a.active {
-	color: #000;
+	background-color: rgba(255,255,255,.15);
+}
+.nav a .icon {
+	display: none;
+}
+.nav a .icon svg {
+	display: block;
+}
+.nav a .icon .feather-life-buoy {
+	transform: rotate(45deg);
+}
+.nav a .icon .feather-life-buoy line:nth-child(3),
+.nav a .icon .feather-life-buoy line:nth-child(4) {
+	display: none;
+}
+@media screen and (max-width: 520px) {
+	.nav a .icon {
+		display: block;
+	}
+	.nav a > span {
+		display: none;
+	}
+}
+.my-ball-count {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 21px; height: 23px;
+	padding: 0 1px;
+	margin-left: 5px;
+	font-size: 13px;
+	font-weight: 800;
+	font-style: normal;
+	color: var(--headerColor);
+	line-height: 1;
+	border-radius: 9999px;
+	background-color: #fff;
 }

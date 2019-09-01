@@ -3,6 +3,17 @@
 
 	--bgColor: #F3F3F3;
 	--headerColor: #FF4136;
+	
+	--gray: #B9CDE1;
+	--darkgray: #8d9aa7;
+	--darkestgray: #6d7782;
+	--blue: #036FDB;
+	--green: #55C4C2;
+	--yellow: #ffc000;
+	--orange: #F3B071;
+	--red: #FF4136;
+	--lightblue: #EEF5FC;
+	--white: #fff;
 }
 
 body {

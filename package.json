@@ -1,11 +1,13 @@
 {
   "name": "pokedex",
+  "homepage": "https://yusufff.github.io/pokedex",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
     "axios-cache-adapter": "^2.4.1",
     "feather-icons": "^4.24.1",
+    "gh-pages": "^2.1.1",
     "history": "^4.9.0",
     "localforage": "^1.7.3",
     "normalize.css": "^8.0.1",
@@ -16,6 +18,8 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

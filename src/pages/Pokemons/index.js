@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Pokemon from '../../components/Pokemon';
+import Icon from '../../components/Icon';
 
 import Api from '../../services/api';
 
@@ -40,9 +41,12 @@ class Pokemons extends React.Component {
 
 		return (
 			<section className="pokemons">
-				{pokemons.map((pokemon, i) => <Pokemon key={`pokemon-${i}`} {...pokemon} />)}
+				{pokemons.map(pokemon => <Pokemon key={`pokemon-${pokemon.url}`} {...pokemon} />)}
 				{next && !fetching &&
-					<div className="pokemons-next" onClick={this.fetchNext}>Load More</div>
+					<div className="pokemons-next" onClick={this.fetchNext}>
+						<Icon i="arrow-down-circle" size={40} />
+						<span>Load More</span>
+					</div>
 				}
 			</section>
 		)

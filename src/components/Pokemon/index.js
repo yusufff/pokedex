@@ -1,34 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Icon from '../Icon';
 
 import Api from '../../services/api';
+import Local from '../../services/localStorage';
+
+import { TypeColors } from '../../constants';
 
 import './styles/Pokemon.css';
 
-const TypeColors = {
-	normal: '#EF5350',
-	fighting: '#ec407a',
-	flying: '#ab47bc',
-	poison: '#7e57c2',
-	ground: '#5c6bc0',
-	rock: '#42a5f5',
-	bug: '#29b6f6',
-	ghost: '#C4D0D6',
-	steel: '#26c6da',
-	fire: '#26a69a',
-	water: '#66bb6a',
-	grass: '#9ccc65',
-	electric: '#d4e157',
-	psychic: '#ffee58',
-	ice: '#ffca28',
-	dragon: '#ffa726',
-	dark: '#ff7043',
-	fairy: '#8d6e63',
-	unknown: '#bdbdbd',
-	shadow: '#78909c',
-}
-
-const Pokemon = ({ name, url }) => {
+const Pokemon = ({ url }) => {
 	const [loading, setLoading] = React.useState(true);
+	const [onMyBall, setOnMyBall] = React.useState((Local.getItem('my-ball') || []).some(p => p.url === url));
 	const [state, setState] = React.useState({});
 
 	React.useEffect(() => {
@@ -41,24 +25,42 @@ const Pokemon = ({ name, url }) => {
 		fetchData();
 	}, [url]);
 
+	const addToMyBall = () => {
+		if ( onMyBall ) {
+			Local.setItem('my-ball', (Local.getItem('my-ball') || []).filter(p => p.url !== url))
+			setOnMyBall(false)
+		} else {
+			Local.setItem('my-ball', [...(Local.getItem('my-ball') || []), { url }])
+			setOnMyBall(true)
+		}
+	}
+
 	return loading ? (
 		<div className="pokemon">
 			Loading...
 		</div>
 	) : (
-		<div className="pokemon">
+		<div className={`pokemon ${onMyBall ? 'pokemon-onmyball' : ''}`}>
 			<div className="pokemon-image">
-				<img src={state.sprites.front_default} alt={state.name || name} />
+				<img src={state.sprites.front_default} alt={state.name} />
+				<div className="pokemon-ball" title={onMyBall ? 'Remove from My Poké Ball' : 'Add to My Poké Ball'} onClick={addToMyBall}>
+					{onMyBall ?
+						<Icon i="minus-circle" /> :
+						<Icon i="plus-circle" />
+					}
+				</div>
 			</div>
-			<div className="pokemon-name">{state.name} - #{state.id}</div>
+			<div className="pokemon-name">
+				<Link to={`/pokemon/${state.id}`}>{state.name} - #{state.id}</Link>
+			</div>
 			<div className="pokemon-types">
 				{state.types.map(({ type }, i) => (
 					<div key={i} className="pokemon-type" style={{ '--typeColor': TypeColors[type.name] }}>{type.name}</div>
 				))}
 			</div>
-			<div className="pokemon-abilities">
+			<div className="pokemon-stats">
 				<span className="pokemon-stats-title">Abilities</span>
-				<div className="pokemon-ability-list">{state.abilities.map(({ ability }) => ability.name.charAt(0).toUpperCase() + name.slice(1)).join(', ')} </div>
+				<div className="pokemon-stats-list">{state.abilities.map(({ ability }) => ability.name.charAt(0).toUpperCase() + ability.name.slice(1)).join(', ')} </div>
 			</div>
 		</div>
 	)
