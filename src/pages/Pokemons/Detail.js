@@ -37,7 +37,7 @@ class Detail extends React.Component {
 		if ( myBall.some(p => p.url === pokemon.url) ) {
 			Local.setItem('my-ball', myBall.filter(p => p.url !== pokemon.url))
 		} else {
-			Local.setItem('my-ball', [...myBall, { url: pokemon.url }])
+			Local.setItem('my-ball', [...myBall, { url: `https://pokeapi.co/api/v2/pokemon/${pokemon.id}` }])
 		}
 		this.setState({ myBall: Local.getItem('my-ball') })
 	}

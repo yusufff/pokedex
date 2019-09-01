@@ -59,6 +59,12 @@
 	opacity: 1;
 	transform: translateY(0);
 }
+@media screen and (max-width: 860px) {
+	.pokemon .pokemon-ball {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 .pokemon-ball:hover {
 	color: var(--red);
 }
