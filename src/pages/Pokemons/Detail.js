@@ -34,10 +34,10 @@ class Detail extends React.Component {
 
 	addToMyBall = () => {
 		const { pokemon, myBall } = this.state;
-		if ( myBall.some(p => p.url === pokemon.url) ) {
-			Local.setItem('my-ball', myBall.filter(p => p.url !== pokemon.url))
+		if ( myBall.some(p => p.url === `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`) ) {
+			Local.setItem('my-ball', myBall.filter(p => p.url !== `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`))
 		} else {
-			Local.setItem('my-ball', [...myBall, { url: `https://pokeapi.co/api/v2/pokemon/${pokemon.id}` }])
+			Local.setItem('my-ball', [...myBall, { url: `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/` }])
 		}
 		this.setState({ myBall: Local.getItem('my-ball') })
 	}
@@ -45,7 +45,7 @@ class Detail extends React.Component {
 	render() {
 		const { fetching, pokemon, myBall } = this.state;
 
-		const onMyBall = myBall.some(p => p.url === pokemon.url)
+		const onMyBall = myBall.some(p => p.url === `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`)
 
 		return fetching ? (
 			<article className="pokemon-detail">
