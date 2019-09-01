@@ -1,0 +1,18 @@
+.loading {
+	position: relative;
+	display: block;
+}
+.loading:before {
+	position: relative;
+	display: block;
+	content: '';
+	width: var(--size); height: var(--size);
+	border: var(--weight) solid rgba(0,0,0,.05);
+	border-right-color: var(--red);
+	border-radius: 50%;
+	animation: loading 1s linear infinite;
+}
+@keyframes loading {
+	from { transform: rotate(0deg) }
+	to { transform: rotate(360deg) }
+}

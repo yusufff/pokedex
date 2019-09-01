@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Icon from '../../components/Icon';
+import Loading from '../../components/Loading';
 
 import Api from '../../services/api';
 import Local from '../../services/localStorage';
@@ -49,7 +50,7 @@ class Detail extends React.Component {
 
 		return fetching ? (
 			<article className="pokemon-detail">
-				Loading...
+				<Loading />
 			</article>
 		) : (
 			<article className="pokemon-detail">

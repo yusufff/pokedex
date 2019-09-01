@@ -29,3 +29,8 @@
 		width: 100%;
 	}
 }
+.pokemon-detail .loading {
+	position: fixed;
+	bottom: 0; right: 0;
+	padding: 15px;
+}

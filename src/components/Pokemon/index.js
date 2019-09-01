@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Icon from '../Icon';
+import Loading from '../Loading';
 
 import Api from '../../services/api';
 import Local from '../../services/localStorage';
@@ -36,8 +37,8 @@ const Pokemon = ({ url }) => {
 	}
 
 	return loading ? (
-		<div className="pokemon">
-			Loading...
+		<div className="pokemon pokemon-loading">
+			<Loading />
 		</div>
 	) : (
 		<div className={`pokemon ${onMyBall ? 'pokemon-onmyball' : ''}`}>

@@ -5,6 +5,7 @@
 
 	width: 100%;
 	max-width: 300px;
+	min-height: 120px;
 	padding-bottom: 15px;
 
 	background-color: #fff;
@@ -30,6 +31,10 @@
 	box-shadow:
 		0 3px 2px 0 rgba(0,0,0,0.02),
 		0 0 0 1px var(--green);
+}
+.pokemon-loading {
+	align-items: center;
+	justify-content: center;
 }
 .pokemon-image {
 	position: relative;

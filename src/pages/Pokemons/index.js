@@ -2,6 +2,7 @@ import React from 'react';
 
 import Pokemon from '../../components/Pokemon';
 import Icon from '../../components/Icon';
+import Loading from '../../components/Loading';
 
 import Api from '../../services/api';
 
@@ -48,6 +49,7 @@ class Pokemons extends React.Component {
 						<span>Load More</span>
 					</div>
 				}
+				{fetching && <Loading />}
 			</section>
 		)
 	}
